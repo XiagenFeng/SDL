@@ -41,6 +41,8 @@
 /* For GET_X_LPARAM, GET_Y_LPARAM. */
 #include <windowsx.h>
 
+#include <VersionHelpers.h>
+
 /* #define WMMSG_DEBUG */
 #ifdef WMMSG_DEBUG
 #include <stdio.h>
@@ -1163,9 +1165,7 @@ struct SDL_WIN_OSVERSIONINFOW {
 static SDL_bool
 IsWinVistaOrNewer(void)
 {
-    DWORD version = GetVersion();
-    DWORD major = (DWORD)(LOBYTE(LOWORD(version)));
-    return (major >= 6)? SDL_TRUE : SDL_FALSE;
+    return IsWindowsVistaOrGreater();
 }
 
 static SDL_bool
